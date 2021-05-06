@@ -11,14 +11,19 @@
             </div>
         </div>
 
-        <button v-if="!item.completed" @click="completeTodo">Complete</button>
+        <TheButton v-if="!item.completed" @click="completeTodo" class="primary">
+            Complete
+        </TheButton>
     </li>
 </template>
 
 <script lang="ts">
 import { defineComponent, inject } from 'vue'
 
+import TheButton from '@/components/TheButton/index.vue'
+
 export default defineComponent({
+    components: { TheButton },
     props: {
         item: {},
         index: {

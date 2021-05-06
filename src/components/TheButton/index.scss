@@ -1,0 +1,18 @@
+.TheButton {
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    border: none;
+    border-radius: 3px;
+    transition: 0.4s;
+
+    &.primary {
+        background-color: #6f4fef;
+        color: white;
+
+        &:hover {
+            background-color: #4c24ea;
+        }
+    }
+}

@@ -13,26 +13,47 @@
                     />
                 </div>
 
-                <div class="col-12 col-md-7">{{ appState.folders }}</div>
+                <div class="col-12 col-md-7">
+                    <TodoList
+                        :folder="appState.folders[appState.activeFolderIndex]"
+                    />
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, inject } from 'vue'
 
 import TodoFoldersList from '@/components/TodoFoldersList/index.vue'
+import TodoList from '@/components/TodoList/index.vue'
 
 export default defineComponent({
-    components: { TodoFoldersList },
+    components: { TodoFoldersList, TodoList },
     setup() {
         const appState = reactive({
             activeFolderIndex: 0,
             folders: [
                 {
                     name: 'Folder Name',
-                    todos: [],
+                    todos: [
+                        {
+                            name: 'Create a todo app',
+                            completed: false,
+                            created_at: new Date(2021, 5, 10),
+                        },
+                        {
+                            name: 'Create a todo ap 2p',
+                            completed: true,
+                            created_at: new Date(2021, 5, 10),
+                        },
+                        {
+                            name: 'Create a todo app',
+                            completed: false,
+                            created_at: new Date(2021, 5, 10),
+                        },
+                    ],
                 },
                 {
                     name: 'Work',
@@ -52,6 +73,13 @@ export default defineComponent({
         const selectFolder = (folder_index: number) => {
             appState.activeFolderIndex = folder_index
         }
+
+        const emitter: any = inject('emitter')
+        emitter.on('complete-todo', (todo_index: number) => {
+            appState.folders[appState.activeFolderIndex].todos[
+                todo_index
+            ].completed = true
+        })
 
         return { appState, selectFolder }
     },

@@ -1,5 +1,5 @@
 <template>
-    <li class="TodoFolder d-flex align-items-center py-2 px-1">
+    <li class="TodoFolder d-flex align-items-center p-2">
         <div class="TodoFolder__badge">{{ folder.name[0] }}</div>
         <div class="TodoFolder__info d-flex flex-column">
             <p>{{ folder.name }}</p>

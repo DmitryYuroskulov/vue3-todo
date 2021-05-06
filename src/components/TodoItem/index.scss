@@ -1,0 +1,38 @@
+.TodoItem {
+    margin-top: 1rem;
+    border-radius: 5px;
+    background-color: #e5ecfb;
+
+    &__badge {
+        width: 40px;
+        text-align: center;
+        padding: 0.6rem;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: #55a1ff;
+        border-radius: 50%;
+        user-select: none;
+    }
+
+    &__info {
+        margin-left: 0.6rem;
+
+        &__date {
+            font-size: 12px;
+            user-select: none;
+        }
+    }
+
+    &--completed {
+        background-color: #e5fbec;
+
+        & .TodoItem__badge {
+            background-color: #6eea9a;
+        }
+
+        & .TodoItem__info__name {
+            text-decoration: line-through;
+        }
+    }
+}
